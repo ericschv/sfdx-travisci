@@ -1,0 +1,74 @@
+<template>
+    <div>
+      <template if:true={isRenewalQuote}>
+        <template if:true={loading}>
+          <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+        <!-- Quote details -->
+        <h3 class="slds-text-heading_small">Renewal Quote Information</h3>
+        
+        <div class="slds-box">
+          <lightning-record-view-form record-id={quote.Id.value} object-api-name="CanaryAMS__Insurance_Product__c" density="compact">
+            <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-top_medium slds-m-bottom_large">
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-output-field field-name="CanaryAMS__Stage__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="Sub_status__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="Expected_Close_Date__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="ZEN_Hazardous__c">
+                  </lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-output-field field-name="CanaryAMS__Transaction_Type__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="CanaryAMS__Account__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="OwnerId">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="CanaryAMS__Producer__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="Days_to_Renewal__c">
+                  </lightning-output-field>
+                </div>
+              </div>
+            </lightning-record-view-form>
+
+
+            <lightning-record-view-form record-id={quote.CanaryAMS__Account__c.value} object-api-name="Account" density="compact">
+              <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-top_medium slds-m-bottom_large">
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-output-field field-name="Industry_Rel__c">
+                  </lightning-output-field>
+                  <lightning-output-field field-name="Flow__c">
+                  </lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-output-field field-name="CanaryAMS__Primary_Contact__c">
+                  </lightning-output-field>
+                </div>
+              </div>
+            </lightning-record-view-form>
+          
+        </div>
+
+        
+
+
+        <lightning-layout horizontal-align="spread" vertical-align="end" class="slds-p-bottom_x-small slds-border_bottom">
+          <lightning-layout-item class="renewal-list">
+            <h3 class="slds-text-heading_small">Renewing Policies</h3>
+            <c-renewal-quote-policy-list policies={policies}></c-renewal-quote-policy-list>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+      <template if:false={isRenewalQuote}>
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_offline" role="alert">
+          <lightning-icon icon-name="utility:warning" size="x-small" alternative-text="Warning" title="Warning">
+          </lightning-icon>
+          <h2 class="slds-m-left_x-small">This is not a Renewal quote.  This feature is only available for Quote Type: Renewal.</h2>
+        </div>
+      </template>
+    </div>
+</template>

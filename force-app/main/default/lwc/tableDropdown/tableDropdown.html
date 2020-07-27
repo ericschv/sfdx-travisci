@@ -1,0 +1,32 @@
+<template>
+  <!-- Show select input only if plain text is not passed in -->
+  <template if:false={plainText}>
+    <select class="slds-select" onchange={handleSelect}>
+      <template for:each={optionData} for:item="option">
+        <template if:true={option.isSelected}>
+          <option key={option.value} value={option.value} selected>{option.label}</option>
+        </template>
+        <template if:false={option.isSelected}>
+          <option key={option.value} value={option.value}>{option.label}</option>
+        </template>
+      </template>
+    </select>
+  </template>
+  <template if:true={plainText}>
+    <template if:true={showTreeIcon}>
+      <div class="slds-p-horizontal_x-small table-dropdown-tree-icon">
+        <div class="table-dropdown-tree-icon__svg">
+          <template if:true={showTreeEnd}>
+            <c-tree-end-icon></c-tree-end-icon>
+          </template>
+          <template if:false={showTreeEnd}>
+            <c-tree-middle-icon></c-tree-middle-icon>
+          </template>
+        </div>
+      </div>
+    </template>
+    <template if:false={showTreeIcon}>
+      <p class="slds-p-horizontal_x-small">{plainText}</p>
+    </template>
+  </template>
+</template>

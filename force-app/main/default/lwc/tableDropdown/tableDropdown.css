@@ -1,0 +1,11 @@
+.table-dropdown-tree-icon {
+  position: relative;
+  height: 20px;
+}
+
+.table-dropdown-tree-icon__svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+}

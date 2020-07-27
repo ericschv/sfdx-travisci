@@ -1,0 +1,14 @@
+<template>
+    <template if:true={hasCoverages}>
+      <lightning-datatable hide-checkbox-column key-field="Id" data={coverages} columns={coverageColumns}>
+      </lightning-datatable>
+    </template>
+    <template if:false={hasCoverages}>
+      <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+        <lightning-icon icon-name="utility:warning" size="x-small" alternative-text="Warning" title="Warning">
+        </lightning-icon>
+        <h2 class="slds-m-left_x-small">This Policy has no associated coverages.
+        </h2>
+      </div>
+    </template>
+</template>

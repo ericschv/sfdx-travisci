@@ -1,0 +1,94 @@
+<template>
+  <!-- Policy card -->
+  <div class="zen-policy">
+    <div>
+      <lightning-layout horizontal-align="spread" vertical-align="end" class="slds-p-bottom_x-small slds-border_bottom">
+        <lightning-layout-item>
+          <h3 class="slds-text-heading_small">{policy.carrier} - {policy.policy}</h3>
+        </lightning-layout-item>
+        <template if:false={policy.coverages.length}>
+          <lightning-layout-item>
+            <lightning-button variant="brand" label="Remove" onclick={removePolicy}
+              class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </template>
+      </lightning-layout>
+
+      <div class="slds-grid slds-wrap slds-gutters_small slds-m-top_small">
+        <!-- Errors -->
+        <template if:true={showErrors}>
+          <template if:true={policy.errors}>
+            <template if:true={policy.errors.length}>
+              <div class="slds-notify slds-text-align_left slds-notify_alert slds-theme_error slds-m-bottom_small" role="alert">
+                <span class="slds-assistive-text">error</span>
+                <lightning-icon icon-name="utility:error" alternative-text="Error" variant="inverse" size="x-small"
+                  class="slds-p-right_medium"></lightning-icon>
+                <div class="slds-size_11-of-12">
+                  <ul>
+                    <template for:each={policy.errors} for:item="error">
+                      <li key={error}>
+                        <lightning-formatted-rich-text value={error}></lightning-formatted-rich-text>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+              </div>
+            </template>
+          </template>
+        </template>
+
+        <!-- Policy details -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-input type="text" label="Policy Number *" onchange={updatePolicyNumber} value={policy.policyNumber}>
+          </lightning-input>
+        </div>
+        <div  class="sld s-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-combobox name="recordType" label="Record Type *" value={policy.recordType}
+            placeholder="Record Type" options={recordTypeOptions} onchange={updateRecordType}>
+          </lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-combobox name="carrierProduct" label="Carrier Product *" value={policy.carrierProduct}
+            placeholder="Carrier Product" options={carrierProductOptions} onchange={updateCarrierProduct}>
+          </lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-input type="text" label="Carrier *" value={policy.carrier} readonly></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-input type="number" label="Premium *" formatter="currency" step="0.01" value={policy.premium} readonly></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-input type="number" label="Agency Fee" formatter="currency" step="0.01" value={policy.agencyFee} readonly></lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+          <lightning-input type="number" label="Carrier Fee" formatter="currency" step="0.01" value={policy.carrierFee} readonly></lightning-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="slds-text-heading_small slds-m-top_medium">Coverages</div>
+    <!-- Coverage drop area -->
+    <div
+      class="slds-m-top_x-small"
+      ondrop={handleDrop}
+      ondragenter={handleDragEnter}
+      ondragover={handleDragOver}
+      ondragleave={handleDragLeave}
+    >
+      <template if:true={policy.coverages.length}>
+        <div class="coverage-container slds-grid slds-wrap">
+          <template for:each={policy.coverages} for:item="coverage">
+            <c-user-friendly-draggable-coverage
+              key={coverage.Id}
+              coverage={coverage}
+            ></c-user-friendly-draggable-coverage>
+          </template>
+        </div>
+      </template>
+      <template if:false={policy.coverages.length}>
+        <div class="coverage-container coverage-container--padding"></div>
+      </template>
+    </div>
+  </div>
+</template>

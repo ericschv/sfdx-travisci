@@ -1,0 +1,29 @@
+<template>
+  <lightning-card variant="Narrow" title="Quote Details">
+    <template if:true={showInfo}>
+      <c-alert dismissible>
+        <p>Some renewing policies have:</p>
+        <ul class="slds-list_dotted">
+          <template if:true={claimExists}>
+            <li>Claims</li>
+          </template>
+          <template if:true={endorsementExists}>
+            <li>Endorsements</li>
+          </template>
+        </ul>
+        <p class="slds-m-top_x-small">Check the "Renewal Info" tab for more details.</p>
+      </c-alert>
+    </template>
+
+    <template if:true={showWarning}>
+      <c-alert variant="warning" dismissible>
+        <h2>We detected odd values in some fields:</h2>
+        <ul class="slds-list_dotted">
+          <template if:true={isEffectiveDateTooFar}>
+            <li>"Effective Date" seems too far.</li>
+          </template>
+        </ul>
+      </c-alert>
+    </template>  
+  </lightning-card>
+</template>
