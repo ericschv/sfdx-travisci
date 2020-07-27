@@ -1,0 +1,59 @@
+<template>
+  
+  <lightning-layout-item class="card">
+    <!-- Policy overview -->
+    <div class="slds-grid slds-gutters slds-wrap card__overview">
+      <div class="slds-col slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Policy:</h3>
+        <p class="slds-m-top_xx-small">{policy.Name}</p>
+      </div>
+      <div class="slds-col slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Policy Number:</h3>
+        <p class="slds-m-top_xx-small">{policy.CanaryAMS__Policy_Number__c}</p>
+      </div>
+      <div class="slds-col slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Carrier:</h3>
+        <p class="slds-m-top_xx-small">{policy.CanaryAMS__Carrier__r.Name}</p>
+      </div>
+      <div class="slds-col slds-m-top_small slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Record Type:</h3>
+        <p class="slds-m-top_xx-small">{policy.RecordType.Name}</p>
+      </div>
+      <div class="slds-col slds-m-top_small slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Total Premium:</h3>
+        <p class="slds-m-top_xx-small">
+          <lightning-formatted-number value={policy.CanaryAMS__Net_Premium__c} format-style="currency" currency-code="CAD">
+          </lightning-formatted-number>
+        </p>
+      </div>
+      <div class="slds-col slds-m-top_small slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Total Carrier Fee:</h3>
+        <p class="slds-m-top_xx-small">
+          <lightning-formatted-number value={policy.CanaryAMS__Total_Taxes_Fees__c} format-style="currency" currency-code="CAD">
+          </lightning-formatted-number>
+        </p>
+      </div>
+      <div class="slds-col slds-m-top_small slds-size_4-of-12">
+        <h3 class="slds-text-color_weak">Total Agency Fee:</h3>
+        <p class="slds-m-top_xx-small">
+          <lightning-formatted-number value={policy.CanaryAMS__Total_Agency_Fees__c} format-style="currency"
+            currency-code="CAD">
+          </lightning-formatted-number>
+        </p>
+      </div>
+    </div>
+    
+    <lightning-accordion class="policy-accordion" allow-multiple-sections-open>
+      <lightning-accordion-section key={coverages} name="Coverages" label={coveragesLabel}>
+        <c-renewal-quote-policy-coverages coverages={coverages}></c-renewal-quote-policy-coverages>
+      </lightning-accordion-section>
+      <lightning-accordion-section key={endorsements} name="Endorsements" label={endorsementsLabel}>
+        <c-renewal-quote-policy-endorsement-list endorsements={endorsements}></c-renewal-quote-policy-endorsement-list>
+      </lightning-accordion-section>
+      <lightning-accordion-section key={claims} name="Claims" label={claimsLabel}>
+        <c-renewal-quote-policy-claims claims={claims}></c-renewal-quote-policy-claims>
+      </lightning-accordion-section>
+    </lightning-accordion>
+
+  </lightning-layout-item>
+</template>

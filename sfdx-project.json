@@ -1,7 +1,11 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app",
+      "path": "salesforce-sentry/force-app",
+      "default": true
+    },
+    {
+      "path": "salesforce/force-app",
       "default": true
     }
   ],

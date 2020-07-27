@@ -1,0 +1,17 @@
+<template>
+  <template if:true={showTreeIcon}>
+    <div class="slds-p-horizontal_x-small table-read-only-tree-icon">
+      <div class="table-read-only-tree-icon__svg">
+        <template if:true={showTreeEnd}>
+          <c-tree-end-icon></c-tree-end-icon>
+        </template>
+        <template if:false={showTreeEnd}>
+          <c-tree-middle-icon></c-tree-middle-icon>
+        </template>
+      </div>
+    </div>
+  </template>
+  <template if:false={showTreeIcon}>
+    <p class="slds-p-horizontal_x-small">{selectedValue}</p>
+  </template>
+</template>

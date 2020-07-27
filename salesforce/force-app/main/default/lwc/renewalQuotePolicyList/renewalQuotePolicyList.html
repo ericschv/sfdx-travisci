@@ -1,0 +1,22 @@
+<template>
+  <template if:true={hasPolicies}>
+    <lightning-accordion class="policy-list-accordion" allow-multiple-sections-open>
+    <template for:each={policies} for:item="policyInfo">
+      <lightning-accordion-section key={policyInfo.policy.Id} name={policyInfo.policy.Id} label={policyInfo.policy.fullName}>
+      <c-renewal-quote-policy key={policyInfo.policy.Id} policy={policyInfo.policy} coverages={policyInfo.coverages}
+          endorsements={policyInfo.endorsements} claims={policyInfo.claims}>
+        </c-renewal-quote-policy>
+      </lightning-accordion-section>
+    </template>
+    </lightning-accordion>
+  </template>
+  <template if:false={hasPolicies}>
+    <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+      <lightning-icon icon-name="utility:warning" size="x-small" alternative-text="Warning" title="Warning">
+      </lightning-icon>
+      <h2 class="slds-m-left_x-small">This Renewal Quote has no associated Policies.
+      </h2>
+    </div>
+  </template>
+  
+</template>

@@ -1,0 +1,21 @@
+.zen-policy {
+  border: 1px solid rgb(221, 219, 218);
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.coverage-container {
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(26, 82, 151, 0.5);
+  transition: background 0.2s;
+}
+
+.coverage-container--highlighted {
+  background: rgba(26, 82, 151, 1);
+}
+
+.coverage-container--padding {
+  padding: 50px;
+}

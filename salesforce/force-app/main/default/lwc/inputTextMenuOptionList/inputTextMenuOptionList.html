@@ -1,0 +1,11 @@
+<template>
+  <datalist>
+    <template for:each={items} for:item="item">
+      <c-input-text-menu-option
+        key={item.value}
+        value={item.value}
+        label={item.label}
+      ></c-input-text-menu-option>
+    </template>
+  </datalist>
+</template>

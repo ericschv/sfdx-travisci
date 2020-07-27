@@ -1,0 +1,18 @@
+{
+  "name": "salesforce",
+  "version": "1.1209.0",
+  "description": "All salesforce components for our salesforce org",
+  "main": "index.js",
+  "scripts": {
+    "test:unit": "lwc-jest",
+    "test:unit:watch": "lwc-jest --watch",
+    "test:unit:debug": "lwc-jest --debug",
+    "test:unit:single:watch": "lwc-jest -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@salesforce/lwc-jest": "^0.5.4",
+    "@salesforce/sfdx-lwc-jest": "^0.5.4"
+  }
+}

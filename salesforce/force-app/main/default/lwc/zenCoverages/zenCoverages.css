@@ -1,0 +1,20 @@
+.custom-table-buttons {
+  padding-top: 10px;
+}
+
+.custom-table-buttons lightning-button {
+  padding-right: 5px;
+}
+
+.tableFilterMenuTitle {
+  font-weight: bold;
+  padding-right: 7px;
+}
+
+header span {
+  font-weight: bold;
+}
+
+.tableFilterMenuDiv lightning-button-menu {
+  padding-right: 7px;
+}

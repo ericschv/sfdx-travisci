@@ -1,0 +1,6 @@
+sfdx-config.json
+.vscode
+config/project-scratch-def.json
+.sfdx/tools
+.sfdx/typings
+.sfdx/orgs

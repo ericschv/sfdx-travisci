@@ -1,0 +1,27 @@
+[
+  { "Id": "a0fc0000006YPIaAAO", "Name": "General Liability: Crime" },
+  {
+    "Id": "a0fc0000006YPIfAAO",
+    "CanaryAMS__Current_Term_Amount__c": 25000989,
+    "CanaryAMS__Limit_Format_Integer__c": 230009898,
+    "Carrier__c": "a02c000000NwZX9AAN",
+    "Carrier__r": { "Name": "Premier Marine", "Id": "a02c000000NwZX9AAN" },
+    "Name": "General Liability: Per occurrence"
+  },
+  {
+    "Id": "a0fc0000006YPIkAAO",
+    "CanaryAMS__Current_Term_Amount__c": 3000043234,
+    "CanaryAMS__Limit_Format_Integer__c": 5000000042342,
+    "Carrier__c": "a02c000000NwZXxAAN",
+    "Carrier__r": { "Name": "SUM Insurance", "Id": "a02c000000NwZXxAAN" },
+    "Name": "Professional Liability: Per occurrence"
+  },
+  {
+    "Id": "a0fc0000006YaQwAAK",
+    "CanaryAMS__Current_Term_Amount__c": 31232,
+    "CanaryAMS__Limit_Format_Integer__c": 4231123,
+    "Carrier__c": "a02c000000NwZFUAA3",
+    "Carrier__r": { "Name": "CFC", "Id": "a02c000000NwZFUAA3" },
+    "Name": "test123"
+  }
+]

@@ -1,0 +1,106 @@
+<template>
+    <div class="zen-coverage" draggable="true" ondragstart={handleDragStart}
+    ondragend={handleDragEnd} ondragenter={ignoreDragEvent} ondragleave={ignoreDragEvent}>
+      <div class="slds-text-heading_small slds-m-bottom_xx-small">{_coverage.name}</div>
+      <div class="slds-grid slds-gutters_x-small slds-wrap">
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Carrier:</p>
+          <template if:true={_coverage.carrierName}>
+            <p>{_coverage.carrierName}</p>
+          </template>
+          <template if:false={_coverage.carrierName}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Coverage:</p>
+          <template if:true={_coverage.coverage}>
+            <p>{_coverage.coverage}</p>
+          </template>
+          <template if:false={_coverage.coverage}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Subcoverage:</p>
+          <template if:true={_coverage.subcoverage}>
+            <p>{_coverage.subcoverage}</p>
+          </template>
+          <template if:false={_coverage.subcoverage}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Limit:</p>
+          <template if:true={_coverage.limit}>
+            <p>{_coverage.limit}</p>
+          </template>
+          <template if:false={_coverage.limit}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Deductible Type:</p>
+          <template if:true={_coverage.deductibleType}>
+            <p>{_coverage.deductibleType}</p>
+          </template>
+          <template if:false={_coverage.deductibleType}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Deductible:</p>
+          <template if:true={_coverage.deductible}>
+            <template if:true={_coverage.isDeductibleTypeCurrency}>
+              <lightning-formatted-number
+                value={_coverage.deductible}
+                format-style="currency"
+              ></lightning-formatted-number>
+            </template>
+            <template if:false={_coverage.isDeductibleTypeCurrency}>
+              <p>{_coverage.deductible}</p>
+            </template>
+          </template>
+          <template if:false={_coverage.deductible}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Premium:</p>
+          <template if:true={_coverage.premium}>
+            <lightning-formatted-number
+              value={_coverage.premium}
+              format-style="currency"
+            ></lightning-formatted-number>
+          </template>
+          <template if:false={_coverage.premium}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Agency Fee:</p>
+          <template if:true={_coverage.agencyFee}>
+            <lightning-formatted-number
+              value={_coverage.agencyFee}
+              format-style="currency"
+            ></lightning-formatted-number>
+          </template>
+          <template if:false={_coverage.agencyFee}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-m-vertical_x-small">
+          <p class="slds-text-title_bold">Carrier Fee:</p>
+          <template if:true={_coverage.carrierFee}>
+            <lightning-formatted-number
+              value={_coverage.carrierFee}
+              format-style="currency"
+            ></lightning-formatted-number>
+          </template>
+          <template if:false={_coverage.carrierFee}>
+            <p>&nbsp;</p>
+          </template>
+        </div>
+      </div>
+    </div>
+</template>
